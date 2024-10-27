@@ -1,0 +1,19 @@
+<RCC>
+    <qresource prefix="/">
+        <file>icons/collect.png</file>
+        <file>icons/home.png</file>
+        <file>icons/login.png</file>
+        <file>icons/logo.png</file>
+        <file>icons/new.png</file>
+        <file>icons/next.png</file>
+        <file>icons/plugins.png</file>
+        <file>icons/previous.png</file>
+        <file>icons/reload.png</file>
+        <file>icons/setting.png</file>
+        <file>icons/stop.png</file>
+        <file>qml/Main.qml</file>
+        <file>qml/BrowserDialog.qml</file>
+        <file>qml/BrowserWebView.qml</file>
+        <file>qml/BrowserWindow.qml</file>
+    </qresource>
+</RCC>
