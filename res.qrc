@@ -15,5 +15,8 @@
         <file>qml/BrowserDialog.qml</file>
         <file>qml/BrowserWebView.qml</file>
         <file>qml/BrowserWindow.qml</file>
+        <file>qml/BrowserTab.qml</file>
+        <file>qml/ToolbarButton.qml</file>
+        <file>qml/AddressBar.qml</file>
     </qresource>
 </RCC>

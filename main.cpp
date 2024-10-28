@@ -17,8 +17,9 @@ int main(int argc, char *argv[])
     QGuiApplication::setOrganizationDomain("https://www.lsm1998.com");
 
     QGuiApplication app(argc, argv);
-    QGuiApplication::setWindowIcon(QIcon("qtBrowser/icons/logo.png")); // 使用资源文件路径
 
+    // 设置图标
+    QGuiApplication::setWindowIcon(QIcon("qtBrowser/icons/logo.png"));
 
     QQmlApplicationEngine engine;
 
@@ -26,11 +27,7 @@ int main(int argc, char *argv[])
     auto context = engine.rootContext();
     context->setContextProperty("controller", &controller);
 
-    const QUrl url("qtBrowser/qml/Main.qml");
-
-    // 设置程序icon
-    QResource::registerResource(QDir::currentPath() + "/icon.qrc");
-
+    const QUrl url("qrc:/qtBrowser/qml/Main.qml");
     QObject::connect(&engine, &QQmlApplicationEngine::objectCreationFailed,
                      &app, []()
                      { QCoreApplication::exit(-1); },

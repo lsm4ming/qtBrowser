@@ -21,6 +21,10 @@ QtObject {
         onClosing: destroy()
     }
 
+    // 导入BrowserWindow
+    property Component browserWindowComponent: BrowserWindow {
+        onClosing: destroy()
+    }
 
     // 创建对话框
     function createDialog(profile) {
@@ -29,9 +33,16 @@ QtObject {
         return newDialog
     }
 
+    // 创建浏览器窗口
+    function createWindow(profile) {
+        const newWindow = browserWindowComponent.createObject(root);
+        newWindow.currentWebView.profile = profile
+        return newWindow
+    }
+
     // 加载网页
     function load(url) {
-        const browserWindow = createDialog(defaultProfile);
+        const browserWindow = createWindow(defaultProfile);
         browserWindow.currentWebView.url = url
     }
 }

@@ -85,7 +85,7 @@ ApplicationWindow {
             width: parent.width
             ToolbarButton {
                 id: backButton
-                iconSource: "qrc:/icons/previous.png"
+                iconSource: "qrc:/qtBrowser/icons/previous.png"
                 tooltip: qsTr("Back")
                 onClicked: currentWebView.goBack()
                 enabled: currentWebView && currentWebView.canGoBack
@@ -112,7 +112,7 @@ ApplicationWindow {
             }//ToolbarButton
             ToolbarButton {
                 id: forwardButton
-                iconSource: "qrc:/icons/next.png"
+                iconSource: "qrc:/qtBrowser/icons/next.png"
                 tooltip: qsTr("Forward")
                 onClicked: currentWebView.goForward()
                 enabled: currentWebView && currentWebView.canGoForward
@@ -140,14 +140,14 @@ ApplicationWindow {
             ToolbarButton {
                 id: reloadButton
                 readonly property bool loading: currentWebView && currentWebView.loading
-                iconSource: loading ? "qrc:/icons/reload.png" : "qrc:/icons/stop.png"
+                iconSource: loading ? "qrc:/qtBrowser/icons/reload.png" : "qrc:/qtBrowser/icons/stop.png"
                 tooltip: loading ? qsTr("Stop") : qsTr("Refresh")
                 onClicked: loading ? currentWebView.stop() : currentWebView.reload()
                 activeFocusOnTab: !browserWindow.platformIsMac
             }//ToolbarButton
             ToolbarButton {
                 id: newPageButton
-                iconSource: "qtBrowser/icons/new.png"
+                iconSource: "qrc:/qtBrowser/icons/new.png"
                 tooltip: qsTr("NewPage")
                 onClicked: createWindow(defaultProfile)
                 activeFocusOnTab: !browserWindow.platformIsMac
@@ -161,7 +161,7 @@ ApplicationWindow {
 
             ToolbarButton {
                 id: settingButton
-                iconSource: "qtBrowser/icons/setting.png"
+                iconSource: "qrc:/qtBrowser/icons/setting.png"
                 tooltip: qsTr("Setting")
                 onClicked: settingsMenu.open()
                 activeFocusOnTab: !browserWindow.platformIsMac
@@ -197,7 +197,7 @@ ApplicationWindow {
 
             ToolbarButton {
                 id: homePageButton
-                iconSource: "qtBrowser/icons/home.png"
+                iconSource: "qrc:/qtBrowser/icons/home.png"
                 tooltip: qsTr("HomePage")
                 onClicked: currentWebView.url = "https://www.www.baidu.com"
                 activeFocusOnTab: !browserWindow.platformIsMac
@@ -216,7 +216,7 @@ ApplicationWindow {
                 top: parent.bottom
                 right: parent.right
             }
-            from:0
+            from: 0
             to: 100
             value: (currentWebView && currentWebView.loadProgress < 100) ? currentWebView.loadProgress : 0
         }// ProgressBar
@@ -240,10 +240,10 @@ ApplicationWindow {
         BrowserWebView {
             onWindowCloseRequested: {
 
-                if (tabs.count == 1) {
+                if (tabs.count === 1) {
                     browserWindow.close()
                 } else {
-                    var tabCount = browserViewLayout.children.length;
+                    const tabCount = browserViewLayout.children.length;
 
                     for (var i = 0; i < tabCount; i++) {
                         var tab = browserViewLayout.children[i];
@@ -290,7 +290,6 @@ ApplicationWindow {
     MouseArea {
         anchors.fill: browserViewLayout
         acceptedButtons: Qt.BackButton | Qt.ForwardButton
-        // @disable-check M2
         cursorShape: undefined
         onClicked: {
             if (!currentWebView || currentWebView.url === "")

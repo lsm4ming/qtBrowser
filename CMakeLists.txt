@@ -12,13 +12,32 @@ qt_add_executable(appqtBrowser
         main.cpp
         browserController.cpp
         browserController.h
+        res.qrc
 )
 
 # 包含 Qt QML 模块
 qt_add_qml_module(appqtBrowser
         URI qtBrowser
         VERSION 1.0
-        RESOURCES res.qrc
+        QML_FILES
+        qml/Main.qml
+        qml/AddressBar.qml
+        qml/BrowserDialog.qml
+        qml/BrowserWebView.qml
+        qml/BrowserWindow.qml
+        qml/BrowserTab.qml
+        qml/ToolbarButton.qml
+        icons/collect.png
+        icons/home.png
+        icons/login.png
+        icons/logo.png
+        icons/new.png
+        icons/next.png
+        icons/plugins.png
+        icons/previous.png
+        icons/reload.png
+        icons/setting.png
+        icons/stop.png
 )
 
 # Qt for iOS sets MACOSX_BUNDLE_GUI_IDENTIFIER automatically since Qt 6.1.

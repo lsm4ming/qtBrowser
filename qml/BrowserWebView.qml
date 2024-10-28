@@ -37,25 +37,26 @@ WebEngineView {
 
     }
 
-    onNewViewRequested: {
-        let tab;
-        if (!request.userInitiated) {
-            console.log("warning: request.userInitiated ")
-        } else if (request.destination === WebEngineView.NewViewInTab) {
-            tab = createEmptyTab(currentWebView.profile);
-            tabs.currentIndex = tabs.count - 1
-            request.openIn(tab)
-        } else if (request.destination === WebEngineView.NewViewInBackgroundTab) {
-            tab = createEmptyTab(currentWebView.profile);
-            request.openIn(tab)
-        } else if (request.destination === WebEngineView.NewViewInDialog) {
-            const dialog = applicationRoot.createDialog(currentWebView.profile);
-            request.openIn(dialog.currentWebView)
-        } else {
-            const window = applicationRoot.createWindow(currentWebView.profile);
-            request.openIn(window.currentWebView)
-        }
-    }
+    // QT6 不支持
+    // onNewViewRequested: {
+    //     let tab;
+    //     if (!request.userInitiated) {
+    //         console.log("warning: request.userInitiated ")
+    //     } else if (request.destination === WebEngineView.NewViewInTab) {
+    //         tab = createEmptyTab(currentWebView.profile);
+    //         tabs.currentIndex = tabs.count - 1
+    //         request.openIn(tab)
+    //     } else if (request.destination === WebEngineView.NewViewInBackgroundTab) {
+    //         tab = createEmptyTab(currentWebView.profile);
+    //         request.openIn(tab)
+    //     } else if (request.destination === WebEngineView.NewViewInDialog) {
+    //         const dialog = applicationRoot.createDialog(currentWebView.profile);
+    //         request.openIn(dialog.currentWebView)
+    //     } else {
+    //         const window = applicationRoot.createWindow(currentWebView.profile);
+    //         request.openIn(window.currentWebView)
+    //     }
+    // }
 
     onFullScreenRequested: {
 
